@@ -1,0 +1,2 @@
+# StampMania
+visualizador de selos
