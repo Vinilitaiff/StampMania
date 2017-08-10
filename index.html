@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Mapa geográfico do Google Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+       google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+             ['Country'],
+          ['Inglaterra'],
+          ['Estados unidos'],
+          ['Brasil'],
+          ['Canadá'],
+          ['França']
+			  
+        ]);
+
+        var options = {
+			region: 'world',
+			colors: '0xFF8747, 0xFFB581, 0xc06000',
+			backgroundColor: '#000000'
+		};
+		
+
+       // var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+		
+		var container = document.getElementById('regions_div');
+		var chart = new google.visualization.GeoChart(container);
+    
+    function myClickHandler(){
+        var selection = chart.getSelection();		
+		var nome = data.getValue(selection[0].row, 0);
+        var message = '';
+        //alert('Pais: ' + nome);
+		loadSelos(nome);
+    }
+    
+    google.visualization.events.addListener(chart, 'select', myClickHandler);			
+
+        chart.draw(data, options);
+      }
+	  
+	  function loadSelos(nome){
+		$('#divNomePais').text(nome).toUpperCase();
+	  }
+    </script>
+    
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Birds stamps of world</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+     <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#mapa">Mapa</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#lista">Lista de países</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Pássaros</h1>
+                        <p class="intro-text">Collection personal of birds stamps of world.
+                            <br>Created by Marcelo Araujo.</p>
+                        <a href="#mapa" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Map Section -->
+    <section id="mapa" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>MAPA GEOGRÁFICO</h2>
+                <div id="regions_div" style="width: auto; height: auto;"></div>    
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Country Lists Section -->
+    <section id="lista" class="content-section text-center">
+        <div class="lista-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2><div id="divNomePais">Lista dos países</div></h2>
+                    <ul class="nav nav-pills">
+                        <li><a data-toggle="pill" href="#A">A</a></li>
+                        <li><a data-toggle="pill" href="#B">B</a></li>
+                        <li><a data-toggle="pill" href="#C">C</a></li>
+                        <li><a data-toggle="pill" href="#D">D</a></li>
+                        <li><a data-toggle="pill" href="#E">E</a></li>
+                        <li><a data-toggle="pill" href="#F">F</a></li>
+                        <li><a data-toggle="pill" href="#G">G</a></li>
+                        <li><a data-toggle="pill" href="#H">H</a></li>
+                        <li><a data-toggle="pill" href="#I">I</a></li>
+                        <li><a data-toggle="pill" href="#J">J</a></li>
+                        <li><a data-toggle="pill" href="#K">K</a></li>
+                        <li><a data-toggle="pill" href="#L">L</a></li>
+                        <li><a data-toggle="pill" href="#M">M</a></li>
+                        <li><a data-toggle="pill" href="#N">N</a></li>
+                        <li><a data-toggle="pill" href="#O">O</a></li>
+                        <li><a data-toggle="pill" href="#P">P</a></li>
+                        <li><a data-toggle="pill" href="#Q">Q</a></li>
+                        <li><a data-toggle="pill" href="#R">R</a></li>
+                        <li><a data-toggle="pill" href="#S">S</a></li>
+                        <li><a data-toggle="pill" href="#T">T</a></li>
+                        <li><a data-toggle="pill" href="#U">U</a></li>
+                        <li><a data-toggle="pill" href="#V">V</a></li>
+                        <li><a data-toggle="pill" href="#W">W</a></li>
+                        <li><a data-toggle="pill" href="#X">X</a></li>
+                        <li><a data-toggle="pill" href="#Y">Y</a></li>
+                        <li><a data-toggle="pill" href="#Z">Z</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <hr>
+                        <div id="A" class="tab-pane fade">
+                          <h3>Country Index - A</h3>
+                          <p>
+                              <a href="#">Afghanistan</a><br>
+                              <a href="http://bird-stamps.org/country/aituta.htm">Aitutaki</a><br>
+                              <a href="#">Aland</a><br>
+                              <a href="#">Albania</a><br>
+                              <a href="#">Alderney</a><br>
+                              <a href="#">Argelia</a><br>
+                              <a href="#">Andorra</a><br>
+                              <a href="#">Angola</a><br>
+                              <a href="#">Anguilla</a><br>
+                              <a href="#">Antigua</a><br>
+                              <a href="#">Argentina</a><br>
+                              <a href="#">Armenia</a><br>
+                              <a href="#">Aruba</a><br>
+                              <a href="#">Ascension</a><br>
+                              <a href="#">Australia</a>
+                              <a href="#">Australian Antarctic Territory</a><br>
+                              <a href="#">Austria</a><br>
+                              <a href="#">Azerbaijan</a><br>
+                              <a href="#">Azores</a>
+                          </p>
+                        </div>
+                        <div id="B" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="C" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="D" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="E" class="tab-pane fade">
+                          <h3>HOME</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div id="F" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="G" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="H" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="I" class="tab-pane fade">
+                          <h3>HOME</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div id="J" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="K" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="L" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="M" class="tab-pane fade">
+                          <h3>HOME</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div id="N" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="O" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="P" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="Q" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="R" class="tab-pane fade">
+                          <h3>HOME</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div id="S" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="T" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="U" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="V" class="tab-pane fade">
+                          <h3>HOME</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                        <div id="W" class="tab-pane fade">
+                          <h3>Menu 1</h3>
+                          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div id="X" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="Y" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div id="Z" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                    
+                        <a href="#" class= "btn btn-default btn-lg-8">A</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">B</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">C</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">D</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">E</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">F</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">G</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">H</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">I</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">J</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">K</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">L</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">M</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">N</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">O</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">P</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">Q</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">R</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">S</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">T</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">U</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">V</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">W</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">Y</a>
+                        <a href="#" class= "btn btn-default btn-lg-8">Z</a>             
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Start Bootstrap</h2>
+                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Your Website 2016</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/grayscale.min.js"></script>
+
+</body>
+
+</html>
