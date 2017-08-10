@@ -16,13 +16,14 @@
 
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable([
-             ['Country'],
+          ['Country'],
           ['Inglaterra'],
           ['Estados unidos'],
           ['Brasil'],
           ['Canadá'],
-          ['França']
-			  
+          ['França'],
+          ['Rússia']
+
         ]);
 
         var options = {
@@ -30,32 +31,32 @@
 			colors: '0xFF8747, 0xFFB581, 0xc06000',
 			backgroundColor: '#000000'
 		};
-		
+
 
        // var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-		
+
 		var container = document.getElementById('regions_div');
 		var chart = new google.visualization.GeoChart(container);
-    
+
     function myClickHandler(){
-        var selection = chart.getSelection();		
+        var selection = chart.getSelection();
 		var nome = data.getValue(selection[0].row, 0);
         var message = '';
         //alert('Pais: ' + nome);
 		loadSelos(nome);
     }
-    
-    google.visualization.events.addListener(chart, 'select', myClickHandler);			
+
+    google.visualization.events.addListener(chart, 'select', myClickHandler);
 
         chart.draw(data, options);
       }
-	  
+
 	  function loadSelos(nome){
 		$('#divNomePais').text(nome).toUpperCase();
 	  }
     </script>
-    
-    
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -145,8 +146,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>MAPA GEOGRÁFICO</h2>
-                <div id="regions_div" style="width: auto; height: auto;"></div>    
-                
+                <div id="regions_div" style="width: auto; height: auto;"></div>
+
             </div>
         </div>
     </section>
@@ -185,7 +186,7 @@
                         <li><a data-toggle="pill" href="#Y">Y</a></li>
                         <li><a data-toggle="pill" href="#Z">Z</a></li>
                     </ul>
-                    
+
                     <div class="tab-content">
                         <hr>
                         <div id="A" class="tab-pane fade">
@@ -313,7 +314,7 @@
                           <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                         </div>
                     </div>
-                    
+
                         <a href="#" class= "btn btn-default btn-lg-8">A</a>
                         <a href="#" class= "btn btn-default btn-lg-8">B</a>
                         <a href="#" class= "btn btn-default btn-lg-8">C</a>
@@ -338,7 +339,7 @@
                         <a href="#" class= "btn btn-default btn-lg-8">V</a>
                         <a href="#" class= "btn btn-default btn-lg-8">W</a>
                         <a href="#" class= "btn btn-default btn-lg-8">Y</a>
-                        <a href="#" class= "btn btn-default btn-lg-8">Z</a>             
+                        <a href="#" class= "btn btn-default btn-lg-8">Z</a>
                 </div>
             </div>
         </div>
